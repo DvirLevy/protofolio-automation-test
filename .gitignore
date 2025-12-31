@@ -1,8 +1,56 @@
 
-# Playwright
+# Node dependencies
 node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
+
+# Playwright artifacts
+.playwright/
+playwright-report/
+test-results/
+traces/
+videos/
+screenshots/
+
+# Playwright helper dirs (older projects)
+playwright/.cache/
+playwright/.auth/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.*
+
+# IDEs / editors
+.vscode/
+.idea/
+.history/
+
+# macOS
+.DS_Store
+
+# Build / output
+dist/
+build/
+out/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Caches
+.cache/
+.parcel-cache/
+.turbo/
+
+# Misc
+.DS_Store
+.envrc
+/*.tgz
