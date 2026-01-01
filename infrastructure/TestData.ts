@@ -1,4 +1,4 @@
-const testData = {
+const testData = { //fix file name
     heroPageText : {
         greetingText : "👋 Hello, I'm",
         titleText : "Dvir Levy",
