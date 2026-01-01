@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import HeroComponent from '../components/HeroComponent';
 import { Utils } from '../infrastructure/utils';
-import TestData from '../infrastructure/testData';
+import testData from '../infrastructure/testData';
 
 
 test.describe('Hero Component Tests', () => {
@@ -10,10 +10,10 @@ test.describe('Hero Component Tests', () => {
     const heroComponent = new HeroComponent(page);
     await page.goto('/',{waitUntil:'load'});
     Utils.validateUrl('http://localhost:8080',page)
-    await expect(heroComponent._greetingText).toHaveText(TestData.heroPageText.greetingText)
-    await expect(heroComponent._name).toHaveText(TestData.heroPageText.titleText)
-    await expect(heroComponent._title).toHaveText(TestData.heroPageText.professionalTitle)
-    await expect(heroComponent._description).toContainText(TestData.heroPageText.descriptionText)
+    await expect(heroComponent._greetingText).toHaveText(testData.heroPageText.greetingText)
+    await expect(heroComponent._name).toHaveText(testData.heroPageText.titleText)
+    await expect(heroComponent._title).toHaveText(testData.heroPageText.professionalTitle)
+    await expect(heroComponent._description).toContainText(testData.heroPageText.descriptionText)
     await heroComponent.clickLinkedinLink();
   });
 })

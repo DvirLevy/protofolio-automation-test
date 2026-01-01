@@ -1,7 +1,7 @@
 import { Page, BrowserContext, Locator, test } from '@playwright/test';
 import { Utils } from '../utils';
 
-export async function clickAndWaitForNewTab(context: BrowserContext, locator : Locator, urlParams:string): Promise<Page> {
+const clickAndWaitForNewTab = async (context: BrowserContext, locator : Locator, urlParams:string): Promise<Page> =>{
     let newTab: Page;
     return await test.step('Open link in new tab', async () => {
     [newTab] = await Promise.all([
@@ -19,3 +19,5 @@ export async function clickAndWaitForNewTab(context: BrowserContext, locator : L
       return newTab;
     });
 }
+
+export { clickAndWaitForNewTab }

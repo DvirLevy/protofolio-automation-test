@@ -1,4 +1,4 @@
-const TestData = {
+const testData = {
     heroPageText : {
         greetingText : "👋 Hello, I'm",
         titleText : "Dvir Levy",
@@ -7,4 +7,4 @@ const TestData = {
     }
 }
 
-export default TestData;
+export default testData;
