@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 import path from 'path';
 
-const environment = process.env.ENV || 'development';
+const environment = process.env.ENV || 'local';
 const envFile = `.env.${environment}`;
 dotenv.config({ path: path.resolve(__dirname, envFile) });
 console.log(`Loading environment from ${envFile}`)
@@ -22,7 +22,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL:'http://localhost:8080',
+    baseURL:process.env.HOST,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',

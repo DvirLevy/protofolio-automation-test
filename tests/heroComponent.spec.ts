@@ -5,11 +5,11 @@ import testData from '../infrastructure/testData';
 
 
 test.describe('Hero Component Tests', () => {
-  test('Sample Test - Placeholder', async ({ page,context }) => {
-    console.log(process.env.LOCAL_HOST);
+  test('Sample Test - Placeholder', async ({ page }) => {
+    console.log(process.env.HOST);
     const heroComponent = new HeroComponent(page);
     await page.goto('/',{waitUntil:'load'});
-    Utils.validateUrl('http://localhost:8080',page)
+    Utils.validateUrl(`${process.env.HOST}`,page)
     await expect(heroComponent._greetingText).toHaveText(testData.heroPageText.greetingText)
     await expect(heroComponent._name).toHaveText(testData.heroPageText.titleText)
     await expect(heroComponent._title).toHaveText(testData.heroPageText.professionalTitle)

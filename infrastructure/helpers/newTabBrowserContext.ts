@@ -9,13 +9,13 @@ const clickAndWaitForNewTab = async (context: BrowserContext, locator : Locator,
     locator.click(),
     ]);
     
-    try{
+    // try{
       await newTab.waitForLoadState();
       await Utils.validateUrl(urlParams, newTab);
-      }
-      catch(error){
-          throw new Error(`somting went wrong with opening a new tab: ${urlParams}, but got: ${newTab.url()}`);
-      }      
+    //   }
+    //   catch(error){
+    //       throw new Error(`somting went wrong with opening a new tab: ${urlParams}, but got: ${newTab.url()}`);
+    //   }      
       return newTab;
     });
 }

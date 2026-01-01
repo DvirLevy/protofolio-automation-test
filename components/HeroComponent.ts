@@ -47,7 +47,7 @@ class HeroComponent {
         await this._githubLinkButton.click();
     }
     async clickLinkedinLink() {
-        await clickAndWaitForNewTab(this._page.context(),this._linkedinLinkButton, 'https://www.linkedin.com/in/dvirlevyhakak');
+        await clickAndWaitForNewTab(this._page.context(),this._linkedinLinkButton, `${process.env.LINKEDIN_URL}`);
     }
     async clickEmailLink() {
         await this._emailLinkButton.click();
