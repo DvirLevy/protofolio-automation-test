@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "local": "cross-env ENV=LOCAL npx playwright test --debug",
-    "prod": "cross-env ENV=PROD npx playwright test",
+    "local": "cross-env ENV=local npx playwright test --debug",
+    "prod": "ENV=prod npx playwright test",
     "report": "npx playwright show-report"
   },
   "keywords": [],
