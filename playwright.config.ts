@@ -9,6 +9,10 @@ console.log(`Loading environment from ${envFile}`)
 
 export default defineConfig({
   testDir: './tests',
+  timeout: 30 * 1000, // general test timeout
+  expect: {
+    timeout: 5000 //for expect method
+  },
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -25,7 +29,7 @@ export default defineConfig({
     baseURL:process.env.HOST,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
@@ -37,22 +41,22 @@ export default defineConfig({
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: { ...devices['Desktop Firefox'],video: 'on' },
     },
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: { ...devices['Desktop Safari'], video: 'on' },
     },
 
     /* Test against mobile viewports. */
     {
       name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
+      use: { ...devices['Pixel 5'] ,video: 'on'},
     },
     {
       name: 'Mobile Safari',
-      use: { ...devices['iPhone 15 Pro'] },
+      use: { ...devices['iPhone 15 Pro'] ,video: 'on'},
     },
 
     /* Test against branded browsers. */
