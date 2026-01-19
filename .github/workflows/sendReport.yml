@@ -1,0 +1,43 @@
+name: Notify by Email After Regression
+
+on:
+  workflow_run:
+    workflows:
+      - Run Portfolio Regression Tests   # ⚠️ חייב להיות זהה ל-name של ה-workflow הראשון
+    types:
+      - completed
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send email notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.GMAIL_USER }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+
+          subject: >
+            ${{ github.event.workflow_run.conclusion == 'success' && '✅' || '❌' }}
+            Portfolio E2E – Run #${{ github.event.workflow_run.id }}
+
+          body: |
+            Portfolio regression execution finished.
+
+            Status:
+            ${{ github.event.workflow_run.conclusion }}
+
+            🔗 Live Playwright Report:
+            https://<username>.github.io/<repo>/
+
+            🧪 Test Run ID:
+            ${{ github.event.workflow_run.id }}
+
+            🔍 GitHub Actions Logs:
+            ${{ github.event.workflow_run.html_url }}
+
+          to: ${{ secrets.GMAIL_USER }}
+          from: Portfolio CI <${{ secrets.GMAIL_USER }}>
