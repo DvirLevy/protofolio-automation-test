@@ -3,6 +3,9 @@ name: Run Portfolio Regression Tests
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   regression-test:
     runs-on: ubuntu-latest
