@@ -21,9 +21,9 @@ class HeroComponent {
     constructor(page: Page) {
         this._page = page;
         this._greetingText = page.locator(locatores.heroPage.greetingText);
-        this._name = page.locator(locatores.heroPage.name); // Replace 'Your Name' with the actual name
-        this._title = page.locator(locatores.heroPage.title); // Replace 'Your Title' with the actual title
-        this._description = page.locator(locatores.heroPage.description); // Replace with actual description
+        this._name = page.locator(locatores.heroPage.name); 
+        this._title = page.locator(locatores.heroPage.title); 
+        this._description = page.locator(locatores.heroPage.description); 
         this._viewProjectsButton = page.locator(locatores.heroPage.viewProjectsButton);
         this._contactMeButton = page.locator(locatores.heroPage.contactMeButton);
         this._resumeDownloadButton = page.locator(locatores.heroPage.resumeDownloadButton);
