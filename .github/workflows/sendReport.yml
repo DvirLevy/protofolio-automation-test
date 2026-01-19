@@ -31,7 +31,7 @@ jobs:
             ${{ github.event.workflow_run.conclusion }}
 
             🔗 Live Playwright Report:
-            https://<username>.github.io/<repo>/
+            https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/?${{ github.event.workflow_run.id }}
 
             🧪 Test Run ID:
             ${{ github.event.workflow_run.id }}
