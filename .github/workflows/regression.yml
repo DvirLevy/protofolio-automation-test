@@ -24,3 +24,10 @@ jobs:
 
       - name: Run Playwright tests
         run: npm run prod
+
+      - name: Deploy Playwright report to GitHub Pages
+        if: always() 
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          publish_dir: playwright-report
