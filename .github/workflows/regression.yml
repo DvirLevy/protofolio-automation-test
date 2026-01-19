@@ -27,10 +27,12 @@ jobs:
 
       - name: Run Playwright tests
         run: npm run prod
-
-      - name: Deploy Playwright report to GitHub Pages
-        if: always() 
-        uses: peaceiris/actions-gh-pages@v4
+      
+      - name: Upload Playwright report as Pages artifact
+        if: always()
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: playwright-report
+          path: playwright-report
+
+      - name: Deploy report to GitHub Pages
+        uses: actions/deploy-pages@v4
