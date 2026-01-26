@@ -8,6 +8,7 @@ test('Hero Component Tests', async ({ page }) => {
   console.log(process.env.HOST);
   const heroComponent = new HeroComponent(page);
   test.step("Opening Portfolio Page",async()=>{
+    console.log(process.env.HOST)
     await page.goto('/',{waitUntil:'load'});
     Utils.validateUrl(`${process.env.HOST}`,page)
   })
