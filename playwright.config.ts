@@ -9,6 +9,7 @@ if(!process.env.CI){
   console.log(`Loading environment from ${envFile}`)
 }
 else{
+  console.log(process.env.CI)
   console.log('Running on CI, loading environment from default .env file')
 }
 
