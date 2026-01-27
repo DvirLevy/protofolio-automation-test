@@ -11,7 +11,7 @@ permissions:
 jobs:
   regression-test:
     runs-on: ubuntu-latest
-    environment: .env.prod
+    environment: prod
 
     steps:
       - name: Checkout repository
