@@ -2,10 +2,15 @@ import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 import path from 'path';
 
-const environment = process.env.ENV
-const envFile = `.env.${environment}`;
-dotenv.config({ path: path.resolve(__dirname, envFile) });
-console.log(`Loading environment from ${envFile}`)
+if(!process.env.CI){
+  const environment = process.env.ENV
+  const envFile = `.env.${environment}`;
+  dotenv.config({ path: path.resolve(__dirname, envFile) });
+  console.log(`Loading environment from ${envFile}`)
+}
+else{
+  console.log('Running on CI, loading environment from default .env file')
+}
 
 export default defineConfig({
   testDir: './tests',
