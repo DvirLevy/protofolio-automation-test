@@ -9,7 +9,8 @@ if(!process.env.CI){
   console.log(`Loading environment from ${envFile}`)
 }
 else{
-  console.log(process.env.CI)
+  console.log("debug yml "+process.env.HOST)
+  console.log(process.env.ENV)
   console.log('Running on CI, loading environment from default .env file')
 }
 
