@@ -28,9 +28,6 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Dump env (safe)
-        run: env | sort | grep HOST
-
       - name: Run Playwright tests
         run: npm run prod
       
