@@ -30,7 +30,7 @@ jobs:
 
       - name: Dump env (safe)
         run: |
-          env | sort | grep -E "BASE|URL|ENV"
+          env | sort | grep -E "HOST|URL|ENV"
 
       - name: Run Playwright tests
         run: npm run prod
