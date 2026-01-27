@@ -10,6 +10,7 @@ if(!process.env.CI){
 }
 else{
   console.log("debug yml "+process.env.HOST)
+  console.log("debug yml 2"+process.env.prod)
   console.log(process.env.ENV)
   console.log('Running on CI, loading environment from default .env file')
 }
