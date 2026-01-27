@@ -11,6 +11,7 @@ jobs:
     
     env:
       ENV: prod
+      HOST: ${{ vars.HOST }}
 
     steps:
     - uses: actions/checkout@v4
