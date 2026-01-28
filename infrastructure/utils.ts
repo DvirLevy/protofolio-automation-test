@@ -3,7 +3,7 @@ import {expect, test, Page } from '@playwright/test';
 export class Utils {
     static  async validateUrl(expectedUrl:string | RegExp, page:Page, isNewTab=false):Promise<void>{
         const acutalUrl = page.url();
-        console.log(`Actual URL: ${acutalUrl}`);
+        console.log(`Actual URL: ${acutalUrl} expected URL: ${expectedUrl} from CI ${process.env.LINKEDIN_URL}`);
         if(isNewTab){
             await test.step(`Validate URL is ${expectedUrl}`, async () => {
                 await expect(acutalUrl).toContain(expectedUrl);
