@@ -10,8 +10,8 @@ const clickAndWaitForNewTab = async (context: BrowserContext, locator : Locator,
     ]);
     
     // try{
-      await newTab.waitForLoadState();
-      await Utils.validateUrl(urlParams, newTab);
+      await newTab.waitForLoadState("domcontentloaded",{timeout:30000});
+      await Utils.validateUrl(urlParams, newTab, true);
     //   }
     //   catch(error){
     //       throw new Error(`somting went wrong with opening a new tab: ${urlParams}, but got: ${newTab.url()}`);

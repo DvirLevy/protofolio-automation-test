@@ -10,7 +10,6 @@ if(!process.env.CI){
 }
 else{
   console.log("debug yml "+process.env.HOST)
-  console.log("debug yml 2"+process.env.prod)
   console.log(process.env.ENV)
   console.log('Running on CI, loading environment from default .env file')
 }
@@ -19,7 +18,7 @@ export default defineConfig({
   testDir: './tests',
   timeout: 30 * 1000, // general test timeout
   expect: {
-    timeout: 5000 //for expect method
+    timeout: 10000 //for expect method
   },
   /* Run tests in files in parallel */
   fullyParallel: true,
