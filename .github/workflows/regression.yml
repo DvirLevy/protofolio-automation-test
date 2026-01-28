@@ -40,6 +40,8 @@ jobs:
       
       - name: Upload Playwright report as Pages artifact
         if: always()
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
+          name: playwright-report
           path: playwright-report
+          retention-days: 10
