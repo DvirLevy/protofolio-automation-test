@@ -54,16 +54,10 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - name: Download Playwright report
-        uses: actions/download-artifact@v4
-        with:
-          name: playwright-report
-          path: .
-      
       - name: Upload to GitHub Pages
         uses: actions/upload-pages-artifact@v4
         with:
-          path: .
-      
+          path: playwright-report
+  
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
