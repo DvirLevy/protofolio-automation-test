@@ -1,9 +1,9 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ ]
+    branches: [ main ]
   pull_request:
-    branches: [  ]
+    branches: [ main ]
 jobs:
   test:
     timeout-minutes: 60
@@ -18,13 +18,9 @@ jobs:
     
     - name: Debug - Check environment variables
       run: |
-        echo "CI: $CI"
-        echo "HOST: $HOST"
-        echo "LINKEDIN_URL: $LINKEDIN_URL"
-        echo "All env vars:"
-        HOST: ${{ secrets.HOST }}
-        LINKEDIN_URL: ${{ secrets.LINKEDIN_URL }}
-        printenv | grep -E 'HOST|LINKEDIN|CI' || true
+         echo "CI: ${{ vars.CI }}"
+         echo "HOST: ${{ vars.HOST }}"
+         echo "LINKEDIN_URL: ${{ vars.LINKEDIN_URL }}"
 
     - name: Install dependencies
       run: npm ci
@@ -35,6 +31,8 @@ jobs:
     - name: Run Playwright tests
       env:
         CI: true
+        HOST: ${{ vars.HOST }}
+        LINKEDIN_URL: ${{ vars.LINKEDIN_URL }}
       run: npm run prod
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
