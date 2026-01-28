@@ -45,25 +45,34 @@ jobs:
           path: playwright-report
           name: github-pages
           retention-days: 1
+      
+      - name: Upload Playwright report as Pages artifact
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: playwright-report
 
-  deploy-pages: 
-    needs: regression-test
-    if: always()
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - name: Download Playwright report
-        uses: actions/download-artifact@v4
-        with:
-          name: playwright-report
-          path: playwright-report
-      
-      - name: Upload to GitHub Pages
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: playwright-report
-      
-      - name: Deploy to GitHub Pages
+      - name: Deploy report to GitHub Pages
         uses: actions/deploy-pages@v4
+
+  # deploy-pages: 
+  #   needs: regression-test
+  #   if: always()
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     pages: write
+  #     id-token: write
+  #   steps:
+  #     - name: Download Playwright report
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: playwright-report
+  #         path: playwright-report
+      
+  #     - name: Upload to GitHub Pages
+  #       uses: actions/upload-pages-artifact@v4
+  #       with:
+  #         path: playwright-report
+      
+  #     - name: Deploy to GitHub Pages
+  #       uses: actions/deploy-pages@v4
