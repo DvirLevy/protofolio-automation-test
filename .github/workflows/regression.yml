@@ -46,8 +46,7 @@ jobs:
           path: playwright-report
           retention-days: 10
 
-  deploy-pages:
-    needs: regression-test # also if failed 
+  deploy-pages: 
     if: always()  
     runs-on: ubuntu-latest
     permissions:
@@ -55,9 +54,9 @@ jobs:
       id-token: write
     steps:
       - name: Upload to GitHub Pages
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: playwright-report
   
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      - name: Deploy Playwright report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
