@@ -22,8 +22,10 @@ jobs:
         echo "HOST: $HOST"
         echo "LINKEDIN_URL: $LINKEDIN_URL"
         echo "All env vars:"
+        HOST: ${{ secrets.HOST }}
+        LINKEDIN_URL: ${{ secrets.LINKEDIN_URL }}
         printenv | grep -E 'HOST|LINKEDIN|CI' || true
-        
+
     - name: Install dependencies
       run: npm ci
 
