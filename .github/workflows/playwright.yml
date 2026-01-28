@@ -9,20 +9,27 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     environment: prod
-    
-    env:
-      ENV: prod
-      HOST: ${{ vars.HOST }}
 
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+    
+    - name: Debug - Check environment variables
+      run: |
+        echo "CI: $CI"
+        echo "HOST: $HOST"
+        echo "LINKEDIN_URL: $LINKEDIN_URL"
+        echo "All env vars:"
+        printenv | grep -E 'HOST|LINKEDIN|CI' || true
+        
     - name: Install dependencies
       run: npm ci
+
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+
     - name: Run Playwright tests
       env:
         CI: true
