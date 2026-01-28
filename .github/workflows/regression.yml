@@ -32,6 +32,10 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
+        env:
+          CI: true
+          HOST: ${{ vars.HOST }}
+          LINKEDIN_URL: ${{ vars.LINKEDIN_URL }}
         run: npm run prod
       
       - name: Upload Playwright report as Pages artifact

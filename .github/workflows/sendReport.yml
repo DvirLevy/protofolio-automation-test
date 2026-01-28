@@ -3,7 +3,7 @@ name: Notify by Email After Regression
 on:
   workflow_run:
     workflows:
-      - Run Portfolio Regression Tests   # ⚠️ חייב להיות זהה ל-name של ה-workflow הראשון
+      - Run Portfolio Regression Tests
     types:
       - completed
 
