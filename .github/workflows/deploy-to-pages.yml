@@ -15,7 +15,14 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-
+    
     steps:
+      - name: Download artifact from workflow run # i'm downloading the report artifact because it was uploaded in other workflow (regression.yml)
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Deploy report to GitHub Pages
         uses: actions/deploy-pages@v4
