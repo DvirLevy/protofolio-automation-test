@@ -47,6 +47,7 @@ jobs:
           retention-days: 1
     
   deploy-pages:
+      needs: regression-test
       runs-on: ubuntu-latest
       permissions:
         pages: write
