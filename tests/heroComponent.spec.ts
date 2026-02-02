@@ -5,7 +5,7 @@ import testData from '../infrastructure/testData';
 
 
 test('Hero Component Tests', async ({ page }) => {
-  console.log(process.env.HOST);
+  console.log(process.env.HOSTa);
   const heroComponent = new HeroComponent(page);
   await test.step("Opening Portfolio Page",async()=>{
     await page.goto('/',{waitUntil:'load'});
