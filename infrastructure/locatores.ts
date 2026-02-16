@@ -12,6 +12,15 @@ const locatores = {
         emailLinkButton : '#emailLink',
         automaticCarousel : '#companiesCarousel',
         scrollDownIndicator : '#scrollIndicator'
+    },
+    projectsComponent:{
+        cards: '#project-cards',
+        projectsTitle:'#projects-title',
+        projectsSubTitle: '#projects-subtitle',
+        cardTitle: '.card-title',
+        cardDescription: '.card-description',
+        cardLink: '.card-link-ref',
+        githubLinkButton: '#gitHubLinkProj'       
     }
 }
 

@@ -1,15 +1,14 @@
-import { test, expect } from '@playwright/test';
+import { test , expect } from '../infrastructure/fixture';
 import HeroComponent from '../components/HeroComponent';
 import { Utils } from '../infrastructure/utils';
 import testData from '../infrastructure/testData';
 
 
-test('Hero Component Tests', async ({ page }) => {
+test('Hero Component Tests',{tag:'@heroComponent'}, async ({ OpenProtfolio }) => {
   console.log(process.env.HOST);
-  const heroComponent = new HeroComponent(page);
+  const heroComponent = new HeroComponent(OpenProtfolio);
   await test.step("Opening Portfolio Page",async()=>{
-    await page.goto('/',{waitUntil:'load'});
-    Utils.validateUrl(`${process.env.HOST}`,page)
+    Utils.validateUrl(`${process.env.HOST}`,OpenProtfolio)
   })
   await test.step("verify greeting text present",async ()=>{
     await expect(heroComponent._greetingText).toHaveText(testData.heroPageText.greetingText)
