@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 
 if(!process.env.CI){
-  const environment = process.env.ENV
+  const environment = process.env.ENV || 'local';
   const envFile = `.env.${environment}`;
   dotenv.config({ path: path.resolve(__dirname, envFile) });
   console.log(`Loading environment from ${envFile}`)

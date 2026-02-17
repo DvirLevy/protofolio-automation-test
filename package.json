@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "local": "cross-env ENV=local npx playwright test --debug",
+    "local": "cross-env ENV=local npx playwright test",
     "prod": "cross-env ENV=prod npx playwright test",
     "report": "npx playwright show-report",
     "test:regression": "echo Running REGRESSION tests"

@@ -21,6 +21,26 @@ const locatores = {
         cardDescription: '.card-description',
         cardLink: '.card-link-ref',
         githubLinkButton: '#gitHubLinkProj'       
+    },
+
+    footer: {
+            footer: '#footer',
+            githubLinkButton: '#githubLinkFooter',
+            linkedinLinkButton: '#linkedinLinkFooter',
+            emailLinkButton: '#emailLinkFooter',
+            resumeFooterDownloadButton: '#resumeLinkFooter',
+            whatsAppLinkButton: '#whatsAppLinkFooter',
+            aboutMe: '#aboutMeFooter',
+            aboutMeName: '#aboutMeName',
+            aboutMeText: '#aboutMeText',
+            quickLink: '#quickLinksFooter',
+            quickLinkTitle: '#quickLinksTitle',
+            quickLinkAbout: '#aboutMeLink',
+            quickLinkProjects: '#projectsLink',
+            quickLinkSkills: '#skillsLink',
+            quickLinkContact: '#contactLink',
+            
+
     }
 }
 
