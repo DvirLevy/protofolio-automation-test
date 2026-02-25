@@ -41,8 +41,19 @@ const locatores = {
             quickLinkContact: '#contactLink',
             
 
+    },
+    contactUsComponent: {
+        fullName: 'input[placeholder="Your name"]',
+        email: 'input[placeholder="your.email@example.com"]',
+        subject: 'input[placeholder="What would you like to discuss?"]',
+        message: 'textarea[placeholder="Tell me about your project..."]',
+        submitButton: 'button:has-text("Send Message")',
+        validationFullName: 'text=Full Name is required',
+        validationEmail: 'text=Email is required',
+        validationSubject: 'text=Subject is required',
+        validationMessage: 'text=Message is required',
+        validationEmailFormat: 'text=Please enter a valid email',
     }
 }
-
 
 export default locatores;

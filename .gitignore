@@ -54,3 +54,6 @@ coverage/
 .DS_Store
 .envrc
 /*.tgz
+
+#mcp
+.vscode/mcp-prompts.txt
