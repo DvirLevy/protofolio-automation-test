@@ -22,18 +22,17 @@ jobs:
           
       - name: Read user email
         id: read_email
-        env:
-          ADMIN_EMAIL: ${{ secrets.GMAIL_USER }}
         run: |
           if [ -f user_email.txt ]; then
-            USER_EMAIL_VAL=$(cat user_email.txt)
+            # xargs trims any leading/trailing whitespace including newlines
+            USER_EMAIL_VAL=$(cat user_email.txt | xargs)
             if [ -n "$USER_EMAIL_VAL" ]; then
-              echo "TO_EMAILS=${ADMIN_EMAIL},${USER_EMAIL_VAL}" >> $GITHUB_ENV
+              echo "USER_EMAIL_APPEND=,${USER_EMAIL_VAL}" >> $GITHUB_ENV
             else
-              echo "TO_EMAILS=${ADMIN_EMAIL}" >> $GITHUB_ENV
+              echo "USER_EMAIL_APPEND=" >> $GITHUB_ENV
             fi
           else
-            echo "TO_EMAILS=${ADMIN_EMAIL}" >> $GITHUB_ENV
+            echo "USER_EMAIL_APPEND=" >> $GITHUB_ENV
           fi
 
       - name: Send email notification
@@ -63,6 +62,6 @@ jobs:
             🔍 GitHub Actions Logs:
             ${{ github.event.workflow_run.html_url }}
 
-          to: ${{ env.TO_EMAILS }}
+          to: ${{ secrets.GMAIL_USER }}${{ env.USER_EMAIL_APPEND }}
           from: Portfolio CI <${{ secrets.GMAIL_USER }}>
 
