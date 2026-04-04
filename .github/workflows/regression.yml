@@ -2,6 +2,11 @@ name: Run Portfolio Regression Tests
 
 on:
   workflow_dispatch:
+    inputs:
+      user_email:
+        description: "User email"
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -19,6 +24,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Save user email
+        if: always() && inputs.user_email != ''
+        run: echo "${{ inputs.user_email }}" > user_email.txt
+
+      - name: Upload user email artifact
+        if: always() && inputs.user_email != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: user-email
+          path: user_email.txt
+          retention-days: 1
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

@@ -1,5 +1,5 @@
 import { Page, Locator } from "@playwright/test";
-import locatores from "../infrastructure/locatores"
+import locatores from "../infrastructure/locators"
 import { clickAndWaitForNewTab } from "../infrastructure/helpers/newTabBrowserContext";
 
 class HeroComponent {
@@ -13,7 +13,7 @@ class HeroComponent {
     readonly _contactMeButton: Locator;
     readonly _resumeDownloadButton: Locator;
     readonly _githubLinkButton: Locator;
-    readonly _linkedinLinkButton: Locator;   
+    readonly _linkedinLinkButton: Locator;
     readonly _emailLinkButton: Locator;
     readonly _automaticCarousel: Locator;
     readonly _scrollDownIndicator: Locator;
@@ -21,9 +21,9 @@ class HeroComponent {
     constructor(page: Page) {
         this._page = page;
         this._greetingText = page.locator(locatores.heroPage.greetingText);
-        this._name = page.locator(locatores.heroPage.name); 
-        this._title = page.locator(locatores.heroPage.title); 
-        this._description = page.locator(locatores.heroPage.description); 
+        this._name = page.locator(locatores.heroPage.name);
+        this._title = page.locator(locatores.heroPage.title);
+        this._description = page.locator(locatores.heroPage.description);
         this._viewProjectsButton = page.locator(locatores.heroPage.viewProjectsButton);
         this._contactMeButton = page.locator(locatores.heroPage.contactMeButton);
         this._resumeDownloadButton = page.locator(locatores.heroPage.resumeDownloadButton);
@@ -39,15 +39,15 @@ class HeroComponent {
     }
     async clickContactMe() {
         await this._contactMeButton.click();
-    }   
+    }
     async clickDownloadResume() {
         await this._resumeDownloadButton.click();
-    }   
+    }
     async clickGithubLink() {
         await this._githubLinkButton.click();
     }
     async clickLinkedinLink() {
-        await clickAndWaitForNewTab(this._page.context(),this._linkedinLinkButton, `${process.env.LINKEDIN_URL}`);
+        await clickAndWaitForNewTab(this._page.context(), this._linkedinLinkButton, `${process.env.LINKEDIN_URL}`);
     }
     async clickEmailLink() {
         await this._emailLinkButton.click();

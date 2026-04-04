@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { ContactUsComponent } from "../components/ContactUsComponent";
+import { ContactUsComponent } from "../components/contact-us.component";
 import testData from "../infrastructure/testData";
 
 // Add test data for contact form

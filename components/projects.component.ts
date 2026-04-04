@@ -1,5 +1,5 @@
 import { Page, Locator, expect } from "@playwright/test";
-import locatores from "../infrastructure/locatores";
+import locatores from "../infrastructure/locators";
 
 export default class ProjectsComponent {
     readonly _page: Page;
@@ -7,7 +7,7 @@ export default class ProjectsComponent {
     readonly _projectsTitle: Locator;
     readonly _projectsSubTitle: Locator;
     readonly _viewMoreLink: Locator;
-    
+
 
     constructor(page: Page) {
         this._page = page;
@@ -18,17 +18,15 @@ export default class ProjectsComponent {
     }
 
     async assertProjectsTitle(): Promise<void> {
-           expect(await this._projectsTitle.textContent()).toBe("Projects")
+        await expect(this._projectsTitle).toHaveText("Projects");
     }
 
     async assertProjectsSubTitle(): Promise<void> {
-        expect(await this._projectsSubTitle.textContent()).toBe("Tools, frameworks, and applications I've built")
+        await expect(this._projectsSubTitle).toHaveText("Tools, frameworks, and applications I've built");
     }
 
     async assertGithubLinkOnTheBottomTheComponent(): Promise<void> {
         const githubLink = this._page.locator(locatores.projectsComponent.githubLinkButton);
-        const isVisable = await expect(githubLink).toBeVisible()
-
-        return isVisable;
+        await expect(githubLink).toBeVisible();
     }
 }

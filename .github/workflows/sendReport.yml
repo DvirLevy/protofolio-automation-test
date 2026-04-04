@@ -12,6 +12,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Download user email artifact
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: user-email
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Read user email
+        id: read_email
+        env:
+          ADMIN_EMAIL: ${{ secrets.GMAIL_USER }}
+        run: |
+          if [ -f user_email.txt ]; then
+            USER_EMAIL_VAL=$(cat user_email.txt)
+            echo "TO_EMAILS=${ADMIN_EMAIL},${USER_EMAIL_VAL}" >> $GITHUB_ENV
+          else
+            echo "TO_EMAILS=${ADMIN_EMAIL}" >> $GITHUB_ENV
+          fi
+
       - name: Send email notification
         uses: dawidd6/action-send-mail@v3
         with:
@@ -39,5 +59,6 @@ jobs:
             🔍 GitHub Actions Logs:
             ${{ github.event.workflow_run.html_url }}
 
-          to: ${{ secrets.GMAIL_USER }}
+          to: ${{ env.TO_EMAILS }}
           from: Portfolio CI <${{ secrets.GMAIL_USER }}>
+

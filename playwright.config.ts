@@ -46,25 +46,25 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] , video: 'on' },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'],video: 'on' },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'],video: 'on' },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'], video: 'on' },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'], video: 'on' },
+    // },
 
-    /* Test against mobile viewports. */
-    {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] ,video: 'on'},
-    },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 15 Pro'] ,video: 'on'},
-    },
+    // /* Test against mobile viewports. */
+    // {
+    //   name: 'Mobile Chrome',
+    //   use: { ...devices['Pixel 5'] ,video: 'on'},
+    // },
+    // {
+    //   name: 'Mobile Safari',
+    //   use: { ...devices['iPhone 15 Pro'] ,video: 'on'},
+    // },
 
     /* Test against branded browsers. */
     // {

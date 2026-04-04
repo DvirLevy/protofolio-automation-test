@@ -1,5 +1,5 @@
 import { Page, Locator, expect, test } from "@playwright/test";
-import locatores from "../infrastructure/locatores";
+import locatores from "../infrastructure/locators";
 
 export class ContactUsComponent {
     private readonly _page: Page;
@@ -51,12 +51,12 @@ export class ContactUsComponent {
         }
     }
 
-    get(){
+    get() {
         return {
-            fullName:  this._fullName,
-            email:  this._email,
-            subject:  this._subject,
-            message:  this._message,
+            fullName: this._fullName,
+            email: this._email,
+            subject: this._subject,
+            message: this._message,
             submitButton: this._submitButton
         }
     }
