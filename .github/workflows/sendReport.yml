@@ -26,12 +26,16 @@ jobs:
           if [ -f user_email.txt ]; then
             # xargs trims any leading/trailing whitespace including newlines
             USER_EMAIL_VAL=$(cat user_email.txt | xargs)
+            echo "Parsed User Email: '$USER_EMAIL_VAL'"
+            
             if [ -n "$USER_EMAIL_VAL" ]; then
               echo "USER_EMAIL_APPEND=,${USER_EMAIL_VAL}" >> $GITHUB_ENV
             else
+              echo "No user email found in artifact."
               echo "USER_EMAIL_APPEND=" >> $GITHUB_ENV
             fi
           else
+            echo "Email artifact file not found."
             echo "USER_EMAIL_APPEND=" >> $GITHUB_ENV
           fi
 
