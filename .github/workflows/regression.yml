@@ -27,7 +27,13 @@ jobs:
 
       - name: Save user email
         if: always()
-        run: echo "${{ inputs.user_email }}" > user_email.txt
+        run: |
+          echo "Debug Context inputs.user_email: '${{ inputs.user_email }}'"
+          echo "Debug Context github.event.inputs.user_email: '${{ github.event.inputs.user_email }}'"
+          # fallback mapping to catch the email
+          USER_EMAIL="${{ inputs.user_email || github.event.inputs.user_email }}"
+          echo "$USER_EMAIL" > user_email.txt
+          echo "Saved email: '$USER_EMAIL'"
 
       - name: Upload user email artifact
         if: always()
