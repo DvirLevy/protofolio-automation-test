@@ -26,11 +26,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Save user email
-        if: always() && inputs.user_email != ''
+        if: always()
         run: echo "${{ inputs.user_email }}" > user_email.txt
 
       - name: Upload user email artifact
-        if: always() && inputs.user_email != ''
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: user-email

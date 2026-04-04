@@ -27,7 +27,11 @@ jobs:
         run: |
           if [ -f user_email.txt ]; then
             USER_EMAIL_VAL=$(cat user_email.txt)
-            echo "TO_EMAILS=${ADMIN_EMAIL},${USER_EMAIL_VAL}" >> $GITHUB_ENV
+            if [ -n "$USER_EMAIL_VAL" ]; then
+              echo "TO_EMAILS=${ADMIN_EMAIL},${USER_EMAIL_VAL}" >> $GITHUB_ENV
+            else
+              echo "TO_EMAILS=${ADMIN_EMAIL}" >> $GITHUB_ENV
+            fi
           else
             echo "TO_EMAILS=${ADMIN_EMAIL}" >> $GITHUB_ENV
           fi
