@@ -2,14 +2,14 @@ import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 import path from 'path';
 
-if(!process.env.CI){
+if (!process.env.CI) {
   const environment = process.env.ENV || 'local';
   const envFile = `.env.${environment}`;
   dotenv.config({ path: path.resolve(__dirname, envFile) });
   console.log(`Loading environment from ${envFile}`)
 }
-else{
-  console.log("debug yml "+process.env.HOST)
+else {
+  console.log("debug yml " + process.env.HOST)
   console.log(process.env.ENV)
   console.log('Running on CI, loading environment from default .env file')
 }
@@ -33,7 +33,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL:process.env.HOST,
+    baseURL: process.env.HOST,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
@@ -43,28 +43,28 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] , video: 'on' },
+      use: { ...devices['Desktop Chrome'], video: 'on' },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'],video: 'on' },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'], video: 'on' },
+    },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'], video: 'on' },
-    // },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'], video: 'on' },
+    },
 
-    // /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] ,video: 'on'},
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 15 Pro'] ,video: 'on'},
-    // },
+    /* Test against mobile viewports. */
+    {
+      name: 'Mobile Chrome',
+      use: { ...devices['Pixel 5'], video: 'on' },
+    },
+    {
+      name: 'Mobile Safari',
+      use: { ...devices['iPhone 15 Pro'], video: 'on' },
+    },
 
     /* Test against branded browsers. */
     // {
