@@ -23,6 +23,8 @@ test('Hero Component Tests', { tag: '@heroComponent' }, async ({ OpenProtfolio, 
   await test.step("verify greeting description text is presented", async () => {
     await expect(heroComponent._description).toContainText(testData.heroPageText.descriptionText)
   })
-  await heroComponent.clickLinkedinLink();
+  await test.step("verify Linkedin link", async () => {
+    await heroComponent.clickLinkedinLink();
+  })
 });
 
