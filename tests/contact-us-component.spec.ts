@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { ContactUsComponent } from "../components/contact-us.component";
 import testData from "../infrastructure/testData";
+import { AiAssistantComponent } from "../components/aiAssistant.component";
 
 // Add test data for contact form
 const validContactData = {
@@ -21,6 +22,7 @@ test.describe("Contact Us Form", () => {
     });
 
     test("should submit form successfully with valid data", async ({ page }) => {
+        const aiAssistant = new AiAssistantComponent(page)
         const contactUs = new ContactUsComponent(page);
         await contactUs.fillForm(
             validContactData.fullName,
@@ -28,6 +30,7 @@ test.describe("Contact Us Form", () => {
             validContactData.subject,
             validContactData.message
         );
+        await aiAssistant.closeAiAssistant()
         await expect(contactUs.get().submitButton).toBeEnabled();
         await contactUs.submitForm();
         // Form submitted successfully - button was enabled

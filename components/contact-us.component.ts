@@ -18,7 +18,16 @@ export class ContactUsComponent {
         this._submitButton = page.locator(locatores.contactUsComponent.submitButton);
     }
 
+    private async closeAvatarPopupIfOpen() {
+        const closeButton = this._page.locator(locatores.aiAssistantComponent.closeButton).first();
+        if (await closeButton.isVisible().catch(() => false)) {
+            await closeButton.click({ force: true });
+            await this._page.locator(locatores.aiAssistantComponent.avatarDialog).first().waitFor({ state: 'hidden', timeout: 5000 }).catch(() => {});
+        }
+    }
+
     async fillForm(fullName: string, email: string, subject: string, message: string) {
+        await this.closeAvatarPopupIfOpen();
         await this._fullName.fill(fullName);
         await this._email.fill(email);
         await this._subject.fill(subject);
@@ -26,10 +35,12 @@ export class ContactUsComponent {
     }
 
     async submitForm() {
-        await this._submitButton.click();
+        await this.closeAvatarPopupIfOpen();
+        await this._submitButton.click({ force: true, timeout: 10000 });
     }
 
     async clearForm() {
+        await this.closeAvatarPopupIfOpen();
         await this._fullName.fill("");
         await this._email.fill("");
         await this._subject.fill("");
